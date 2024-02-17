@@ -84,7 +84,7 @@ def sample_employee():
     return {"name": "rinkit Doe", "email": "ronit@example.com", "department_id": "65cfbb3513f07f5006a4a6ec"}
 @pytest.fixture
 def sample_employee_update():
-    return {"name":"John Doe","email":"john5@example.com","department_id":"1"}
+    return {"name":"John Doe","email":"john5@example.com","department_id":"65cfbb3513f07f5006a4a6ec"}
 @pytest.fixture
 def sample_department():
     return {"name":"CS"}
@@ -94,7 +94,7 @@ def sample_department_update():
 
 def test_create_employee(sample_employee):
     response = client.post("/employees/", json=sample_employee)
-    print("response is",response)
+    print(response)
 def test_get_employee():
     employee_id="65cfbd98c70e4fa69a90e590"#Mongo db employee collection specific _id unique for employee document
     response=client.get(f"/employees/{employee_id}")
