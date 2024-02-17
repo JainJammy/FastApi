@@ -94,32 +94,38 @@ def sample_department_update():
 
 def test_create_employee(sample_employee):
     response = client.post("/employees/", json=sample_employee)
-    print(response.json())
+    print("response is",response)
 def test_get_employee():
     employee_id="65cfbd98c70e4fa69a90e590"#Mongo db employee collection specific _id unique for employee document
     response=client.get(f"/employees/{employee_id}")
-    print("resposne is",response)
+    print("response is",response)
 def test_update_employee(sample_employee_update):
     employee_id="65cfbd98c70e4fa69a90e590"#Mongo db employee collection specific _id unique for employee document
     response=client.put(f"/employees/{employee_id}",json=sample_employee_update)
+    print("response is",response)
 def test_delete_employee():
     employee_id="65cfbd98c70e4fa69a90e590"#Mongo db employee collection specific _id unique for employee document
     response=client.delete(f"/employees/{employee_id}")
+    print("response is",response)
 def test_create_department_data(sample_department):
     response=client.post("/departments/",json=sample_department)
-    print(response)
+    print("response is",response)
 def test_get_department():
     department_id="65cfbae2db62ac770d5d64ba"#Mongo db department collection specific _id unique for department document
     response=client.get(f"/departments/{department_id}")
+    print("response is",response)
 def test_update_department(sample_department_update):
     department_id="65cfbae2db62ac770d5d64ba"#Mongo db department collection specific _id for department document
     response=client.put(f"/departments/{department_id}",json=sample_department_update)
+    print("response is",response)
 def test_delete_department():
     department_id="65cfbae2db62ac770d5d64ba"#Mongo db department collection specific _id for department document
-    response=client.delete("/")
+    response=client.delete(f"/departments/{department_id}")
+    print("response is",response)
 def test_employeewithdepartment():
     employeedepartmentid=ObjectId("65cfbd98c70e4fa69a90e590")#getting the specific document of employee from employee collection
     response=client.get(f"/employeedepartments/{employeedepartmentid}")
+    print("response is",response)
 """running on localhost to test the api endpoints command to run uvicorn test:app --reload"""    
 if __name__ == "__main__":
     import uvicorn
